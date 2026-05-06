@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DG Audiovisual & Posicionamento. Portfólio de reels, conteúdo visual e posicionamento para marcas, negócios e profissionais." />
+  <title>DG Audiovisual & Posicionamento</title>
+
+  <style>
+    :root {
+      --bg: #030504;
+      --text: #f4f7f2;
+      --muted: #a7b0a6;
+      --muted-2: #6f786e;
+      --green: #75ff00;
+      --green-2: #b2ff4a;
+      --line: rgba(255, 255, 255, 0.1);
+      --line-green: rgba(117, 255, 0, 0.38);
+      --shadow: 0 0 60px rgba(117, 255, 0, 0.16);
+      --container: 1200px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(117, 255, 0, 0.08), transparent 24%),
+        radial-gradient(circle at 78% 12%, rgba(117, 255, 0, 0.16), transparent 28%),
+        linear-gradient(135deg, #010201 0%, #07100d 45%, #020302 100%);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      pointer-events: none;
+      opacity: 0.045;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ambient-video {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      opacity: 0.12;
+      filter: blur(10px) saturate(0.85) contrast(1.08);
+      transform: scale(1.08);
+      pointer-events: none;
+    }
+
+    .ambient-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ambient-mask {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 72% 44%, rgba(117, 255, 0, 0.18), transparent 32%),
+        linear-gradient(90deg, rgba(3, 5, 4, 0.98) 0%, rgba(3, 5, 4, 0.88) 45%, rgba(3, 5, 4, 0.6) 100%),
+        linear-gradient(0deg, rgba(3, 5, 4, 0.98), transparent 44%);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle, rgba(117, 255, 0, 0.11), transparent 64%);
+      opacity: 0.8;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: .92rem;
+      font-weight: 900;
+      transition: .25s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #071007;
+      box-shadow: 0 0 34px rgba(117,255,0,.22);
+    }
+
+    .btn-ghost {
+      border-color: var(--line-green);
+      background: rgba(0,0,0,.34);
+      color: var(--green);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-ghost:hover {
+      background: var(--green);
+      color: #071007;
+    }
+
+    .header {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(3,5,4,.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+      border: 1px solid rgba(117,255,0,.5);
+      box-shadow: 0 0 24px rgba(117,255,0,.14);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: .84rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      color: #dbe2d8;
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 118px 0 54px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .visual {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      place-items: center;
+      perspective: 1400px;
+      order: 1;
+    }
+
+    .stage-ring {
+      position: absolute;
+      width: min(76vw, 560px);
+      height: min(76vw, 560px);
+      border-radius: 50%;
+      border: 1px solid rgba(117,255,0,.24);
+      background: radial-gradient(circle, rgba(117,255,0,.12), transparent 62%);
+      box-shadow: inset 0 0 90px rgba(117,255,0,.05), var(--shadow);
+      z-index: 1;
+    }
+
+    .stage-ring.small {
+      width: min(62vw, 430px);
+      height: min(62vw, 430px);
+      border-style: dashed;
+      opacity: .7;
+      animation: spin 24s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .phone-wrap {
+      position: relative;
+      z-index: 4;
+      transform-style: preserve-3d;
+      transform: rotateY(16deg) rotateX(8deg);
+      transition: transform .18s ease-out;
+    }
+
+    .phone-shadow {
+      position: absolute;
+      left: 50%;
+      bottom: -28px;
+      width: 76%;
+      height: 36px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(0,0,0,.64);
+      filter: blur(16px);
+    }
+
+    .phone {
+      position: relative;
+      width: 335px;
+      height: 680px;
+      padding: 12px;
+      overflow: hidden;
+      border-radius: 46px;
+      background: linear-gradient(145deg, #202523, #070907 36%, #171c19 100%);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 40px 110px rgba(0,0,0,.6),
+        0 0 56px rgba(117,255,0,.16);
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 46px;
+      pointer-events: none;
+      background: linear-gradient(160deg, rgba(255,255,255,.16), transparent 24%, rgba(117,255,0,.08) 72%, transparent);
+      opacity: .75;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 112px;
+      height: 28px;
+      border-radius: 999px;
+      background: #040504;
+      z-index: 10;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 36px;
+      background: #000;
+    }
+
+    .phone-screen video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .95;
+      filter: brightness(.8) contrast(1.08) saturate(.98);
+    }
+
+    .screen-dark {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.88), transparent 38%, rgba(0,0,0,.24)),
+        linear-gradient(to right, rgba(0,0,0,.10), transparent 20%, transparent 80%, rgba(0,0,0,.14));
+      pointer-events: none;
+    }
+
+    .ig-top {
+      position: absolute;
+      top: 18px;
+      left: 16px;
+      right: 16px;
+      z-index: 5;
+    }
+
+    .story-bars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .story-bars span {
+      display: block;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.28);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .story-bars span.seen {
+      background: rgba(255,255,255,.72);
+    }
+
+    .story-bars span.active::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      transform-origin: left center;
+      animation: fillbar 20s linear forwards;
+    }
+
+    @keyframes fillbar {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .ig-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff;
+    }
+
+    .ig-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .ig-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff, #88ff35);
+      padding: 2px;
+      flex: 0 0 34px;
+    }
+
+    .ig-avatar::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #0c0c0c;
+    }
+
+    .ig-name {
+      font-size: .84rem;
+      font-weight: 800;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 150px;
+    }
+
+    .ig-meta {
+      font-size: .68rem;
+      color: rgba(255,255,255,.78);
+      margin-top: 3px;
+    }
+
+    .ig-more {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      opacity: .95;
+    }
+
+    .ig-right {
+      position: absolute;
+      right: 14px;
+      bottom: 88px;
+      z-index: 5;
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+      color: #fff;
+    }
+
+    .ig-action {
+      display: grid;
+      justify-items: center;
+      gap: 5px;
+      font-size: .68rem;
+      font-weight: 700;
+    }
+
+    .ig-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(0,0,0,.24);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(6px);
+      font-size: 1.1rem;
+    }
+
+    .ig-bottom {
+      position: absolute;
+      left: 16px;
+      right: 62px;
+      bottom: 18px;
+      z-index: 5;
+      color: #fff;
+    }
+
+    .ig-caption-user {
+      font-size: .82rem;
+      font-weight: 900;
+    }
+
+    .ig-caption {
+      margin-top: 8px;
+      font-size: .83rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,.92);
+      max-width: 220px;
+    }
+
+    .ig-audio {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+      font-size: .7rem;
+      color: rgba(255,255,255,.85);
+      max-width: 100%;
+    }
+
+    .ig-controls {
+      position: absolute;
+      left: 50%;
+      bottom: -78px;
+      transform: translateX(-50%);
+      z-index: 7;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: max-content;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(3,5,4,.78);
+      border: 1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+
+    .control-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.04);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .control-btn:hover {
+      border-color: rgba(117,255,0,.44);
+      color: var(--green);
+      transform: translateY(-1px);
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 2px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.24);
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .dot.active {
+      width: 22px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(117,255,0,.5);
+    }
+
+    .float-card {
+      position: absolute;
+      z-index: 6;
+      width: 180px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      background: rgba(3,5,4,.66);
+      padding: 15px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.42), var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .float-card.left {
+      left: -118px;
+      top: 110px;
+      transform: translateZ(54px);
+    }
+
+    .float-card.right {
+      right: -118px;
+      bottom: 120px;
+      transform: translateZ(66px);
+    }
+
+    .float-card .tag {
+      color: var(--green);
+      font-size: .66rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .float-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: .95rem;
+      line-height: 1.2;
+    }
+
+    .float-card p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.45;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 4;
+      order: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(117,255,0,.28);
+      background: rgba(117,255,0,.11);
+      color: var(--green);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    h1 {
+      margin-top: 22px;
+      max-width: 620px;
+      font-size: clamp(3.1rem, 6.8vw, 6.2rem);
+      line-height: .86;
+      letter-spacing: -.09em;
+      font-weight: 950;
+    }
+
+    h1 .green {
+      color: var(--green);
+    }
+
+    .lead {
+      margin-top: 24px;
+      max-width: 560px;
+      color: #c4ccc0;
+      line-height: 1.75;
+      font-size: 1.03rem;
+    }
+
+    .actions {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .mini-proof {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 620px;
+    }
+
+    .proof-card {
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px;
+      background: rgba(255,255,255,.04);
+      padding: 14px;
+      backdrop-filter: blur(12px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proof-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 64px;
+      height: 2px;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
+    }
+
+    .proof-card strong {
+      display: block;
+      color: var(--green);
+      font-size: 1rem;
+      font-weight: 950;
+    }
+
+    .proof-card span {
+      display: block;
+      margin-top: 5px;
+      color: #d9e0d4;
+      font-size: .8rem;
+      line-height: 1.35;
+    }
+
+    .portfolio-note {
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: .86rem;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    @media (max-width: 1100px) {
+      .nav-links,
+      .header .btn {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .visual {
+        min-height: 620px;
+        order: 1;
+      }
+
+      .copy {
+        order: 2;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 20px, var(--container));
+      }
+
+      .header {
+        top: 10px;
+      }
+
+      .nav {
+        min-height: 66px;
+        padding: 7px 8px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+      }
+
+      .brand-copy strong {
+        font-size: .72rem;
+      }
+
+      .brand-copy span {
+        font-size: .54rem;
+      }
+
+      .hero {
+        padding-top: 98px;
+        padding-bottom: 36px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 14vw, 4.6rem);
+      }
+
+      .lead {
+        font-size: .98rem;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+
+      .actions .btn {
+        width: 100%;
+      }
+
+      .mini-proof {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 560px;
+      }
+
+      .stage-ring {
+        width: 380px;
+        height: 380px;
+      }
+
+      .stage-ring.small {
+        width: 300px;
+        height: 300px;
+      }
+
+      .phone-wrap {
+        transform: rotateY(8deg) rotateX(4deg) !important;
+      }
+
+      .phone {
+        width: 270px;
+        height: 548px;
+        border-radius: 40px;
+      }
+
+      .phone-screen {
+        border-radius: 31px;
+      }
+
+      .phone-notch {
+        width: 96px;
+        height: 25px;
+      }
+
+      .float-card {
+        display: none;
+      }
+
+      .ig-right {
+        right: 10px;
+        bottom: 80px;
+        gap: 12px;
+      }
+
+      .ig-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .ig-bottom {
+        right: 54px;
+      }
+
+      .ig-controls {
+        bottom: -70px;
+        padding: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-video" aria-hidden="true">
+    <video id="ambientVideo" src="reels/reel-01.mp4" poster="reels/thumb-01.jpg" autoplay muted loop playsinline></video>
+  </div>
+  <div class="ambient-mask" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#inicio" class="brand">
+          <img src="img/logo.png" alt="Logo DG" />
+          <div class="brand-copy">
+            <strong>DG</strong>
+            <span>Audiovisual & Posicionamento</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="#inicio" class="active">Início</a>
+          <a href="#portfolio">Portfólio</a>
+        </div>
+
+        <a class="btn btn-ghost" href="https://wa.me/351933837256" target="_blank" rel="noopener">
+          Fale comigo
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero" id="inicio">
+    <div class="container hero-grid">
+      <section class="visual" id="portfolio" aria-label="Portfólio em telefone 3D">
+        <div class="stage-ring"></div>
+        <div class="stage-ring small"></div>
+
+        <div class="phone-wrap" id="phoneWrap">
+          <div class="float-card left">
+            <div class="tag">Posicionamento</div>
+            <strong>Mostra a tua direção visual em ação.</strong>
+            <p>O telefone funciona como prova visual de como tu constróis percepção.</p>
+          </div>
+
+          <div class="float-card right">
+            <div class="tag">Percepção</div>
+            <strong>O cliente entende teu valor mais rápido.</strong>
+            <p>O conteúdo vira argumento visual para gerar confiança e contacto.</p>
+          </div>
+
+          <div class="phone-shadow"></div>
+
+          <div class="phone">
+            <div class="phone-notch"></div>
+
+            <div class="phone-screen">
+              <video id="heroVideo" autoplay muted loop playsinline poster="reels/thumb-01.jpg"></video>
+              <div class="screen-dark"></div>
+
+              <div class="ig-top">
+                <div class="story-bars" id="storyBars"></div>
+
+                <div class="ig-head">
+                  <div class="ig-user">
+                    <div class="ig-avatar"></div>
+                    <div>
+                      <div class="ig-name" id="igName">cliente.exemplo</div>
+                      <div class="ig-meta" id="igMeta">Portfólio DG • 4 h</div>
+                    </div>
+                  </div>
+                  <div class="ig-more">•••</div>
+                </div>
+              </div>
+
+              <div class="ig-right">
+                <div class="ig-action">
+                  <div class="ig-icon">♥</div>
+                  <span id="likesCount">2.3k</span>
+                </div>
+                <div class="ig-action">
+                  <div class="ig-icon">💬</div>
+                  <span id="commentsCount">148</span>
+                </div>
+                <div class="ig-action">
+                  <div class="ig-icon">↗</div>
+                  <span>Enviar</span>
+                </div>
+                <div class="ig-action">
+                  <div class="ig-icon">🔖</div>
+                  <span>Guardar</span>
+                </div>
+              </div>
+
+              <div class="ig-bottom">
+                <div class="ig-caption-user" id="captionUser">@cliente.exemplo</div>
+                <div class="ig-caption" id="captionText">
+                  Posicionamento visual para comunicar valor, presença e confiança.
+                </div>
+                <div class="ig-audio" id="audioText">♫ áudio original - cliente.exemplo</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ig-controls">
+            <button class="control-btn" id="prevBtn" aria-label="Reel anterior">←</button>
+            <div class="dots" id="dots"></div>
+            <button class="control-btn" id="nextBtn" aria-label="Próximo reel">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="copy">
+        <div class="eyebrow">✦ Posicionamento visual</div>
+
+        <h1>
+          A tua imagem
+          <span class="green">posiciona valor</span>
+          ou só preenche o feed?
+        </h1>
+
+        <p class="lead">
+          Construo presença digital para negócios, artistas e profissionais através de direção visual,
+          conteúdo estratégico e posicionamento, para o público perceber valor antes da primeira conversa.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/351933837256?text=Ol%C3%A1%2C%20quero%20falar%20sobre%20o%20meu%20projeto." target="_blank" rel="noopener">
+            Quero posicionar minha marca
+          </a>
+
+          <a class="btn btn-ghost" href="#portfolio">Ver trabalhos</a>
+        </div>
+
+        <div class="mini-proof">
+          <div class="proof-card">
+            <strong>Percepção</strong>
+            <span>para o público entender teu valor</span>
+          </div>
+          <div class="proof-card">
+            <strong>Autoridade</strong>
+            <span>para parecer profissional e confiável</span>
+          </div>
+          <div class="proof-card">
+            <strong>Contacto</strong>
+            <span>para gerar conversas com intenção</span>
+          </div>
+        </div>
+
+        <p class="portfolio-note">
+          O objetivo não é só aparecer. É fazer o cliente perceber valor e querer entrar em contacto.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const reels = [
+      {
+        video: "reels/reel-01.mp4",
+        poster: "reels/thumb-01.jpg",
+        name: "Vini Freitas",
+        meta: "Portfólio DG • 3 h",
+        captionUser: "@douglasfreitaspt",
+        caption: "Direção visual para artista: narrativa, autoridade e presença com identidade própria.",
+        audio: "♫ áudio original - DG",
+        likes: "2.3k",
+        comments: "148"
+      },
+      {
+        video: "reels/reel-02.mp4",
+        poster: "reels/thumb-02.jpg",
+        name: "Dra. Leonice Moreira",
+        meta: "Portfólio DG • 6 h",
+        captionUser: "@douglasfreitaspt",
+        caption: "Conteúdo estratégico para negócio: confiança, clareza e posicionamento para gerar contacto.",
+        audio: "♫ áudio original - DG",
+        likes: "3.1k",
+        comments: "204"
+      },
+      {
+        video: "reels/reel-03.mp4",
+        poster: "reels/thumb-03.jpg",
+        name: "Dettman Barber",
+        meta: "Portfólio DG • 1 d",
+        captionUser: "@douglasfreitaspt",
+        caption: "Mais do que cortar cabelo, é cuidar da imagem que chega antes de você.",
+        audio: "♫ áudio original - DG",
+        likes: "1.8k",
+        comments: "96"
+      }
+    ];
+
+    let current = 0;
+    let autoRotate;
+
+    const video = document.getElementById("heroVideo");
+    const ambientVideo = document.getElementById("ambientVideo");
+    const igName = document.getElementById("igName");
+    const igMeta = document.getElementById("igMeta");
+    const captionUser = document.getElementById("captionUser");
+    const captionText = document.getElementById("captionText");
+    const audioText = document.getElementById("audioText");
+    const likesCount = document.getElementById("likesCount");
+    const commentsCount = document.getElementById("commentsCount");
+    const dotsWrap = document.getElementById("dots");
+    const barsWrap = document.getElementById("storyBars");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const phoneWrap = document.getElementById("phoneWrap");
+    const visualStage = document.getElementById("portfolio");
+    const cursorGlow = document.getElementById("cursorGlow");
+
+    function createIndicators() {
+      dotsWrap.innerHTML = "";
+      barsWrap.innerHTML = "";
+
+      reels.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.setAttribute("aria-label", `Ir para reel ${index + 1}`);
+        dot.addEventListener("click", () => {
+          setReel(index);
+          restartAutoRotate();
+        });
+        dotsWrap.appendChild(dot);
+
+        const bar = document.createElement("span");
+        barsWrap.appendChild(bar);
+      });
+    }
+
+    function updateIndicators() {
+      [...dotsWrap.children].forEach((dot, index) => {
+        dot.classList.toggle("active", index === current);
+      });
+
+      [...barsWrap.children].forEach((bar, index) => {
+        bar.className = index < current ? "seen" : index === current ? "active" : "";
+      });
+    }
+
+    function setVideoSource(videoEl, reel) {
+      if (!videoEl) return;
+      videoEl.src = reel.video;
+      videoEl.poster = reel.poster;
+      videoEl.load();
+      videoEl.play().catch(() => {});
+    }
+
+    function setReel(index) {
+      current = index;
+      const reel = reels[current];
+
+      setVideoSource(video, reel);
+      setVideoSource(ambientVideo, reel);
+
+      igName.textContent = reel.name;
+      igMeta.textContent = reel.meta;
+      captionUser.textContent = reel.captionUser;
+      captionText.textContent = reel.caption;
+      audioText.textContent = reel.audio;
+      likesCount.textContent = reel.likes;
+      commentsCount.textContent = reel.comments;
+
+      updateIndicators();
+    }
+
+    function nextReel() {
+      setReel((current + 1) % reels.length);
+    }
+
+    function prevReel() {
+      setReel((current - 1 + reels.length) % reels.length);
+    }
+
+    function restartAutoRotate() {
+      clearInterval(autoRotate);
+      autoRotate = setInterval(nextReel, 20000);
+    }
+
+    prevBtn.addEventListener("click", () => {
+      prevReel();
+      restartAutoRotate();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      nextReel();
+      restartAutoRotate();
+    });
+
+    createIndicators();
+    setReel(0);
+    restartAutoRotate();
+
+    document.querySelectorAll("video").forEach((videoEl) => {
+      videoEl.muted = true;
+      videoEl.playsInline = true;
+      const play = () => videoEl.play().catch(() => {});
+      play();
+      document.addEventListener("touchstart", play, { once: true });
+    });
+
+    if (window.innerWidth > 720) {
+      window.addEventListener("pointermove", (event) => {
+        cursorGlow.style.left = event.clientX + "px";
+        cursorGlow.style.top = event.clientY + "px";
+      });
+
+      visualStage.addEventListener("pointermove", (event) => {
+        const rect = visualStage.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+
+        const rotateY = (x - 0.5) * 18;
+        const rotateX = (0.5 - y) * 12;
+
+        phoneWrap.style.transform = `rotateY(${rotateY + 14}deg) rotateX(${rotateX + 6}deg)`;
+      });
+
+      visualStage.addEventListener("mouseleave", () => {
+        phoneWrap.style.transform = "rotateY(16deg) rotateX(8deg)";
+      });
+    }
+  </script>
+</body>
+</html>

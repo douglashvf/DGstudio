@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio DG Audiovisual & Posicionamento. Reels e projetos visuais para negócios, artistas e profissionais." />
+  <title>Portfólio | DG Audiovisual & Posicionamento</title>
+
+  <style>
+    :root {
+      --bg: #030504;
+      --text: #f4f7f2;
+      --muted: #a7b0a6;
+      --muted-2: #70796f;
+      --green: #75ff00;
+      --green-2: #b2ff4a;
+      --line: rgba(255,255,255,.1);
+      --line-green: rgba(117,255,0,.38);
+      --shadow: 0 0 60px rgba(117,255,0,.16);
+      --container: 1180px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 16% 18%, rgba(117,255,0,.08), transparent 24%),
+        radial-gradient(circle at 82% 10%, rgba(117,255,0,.16), transparent 28%),
+        linear-gradient(135deg, #010201 0%, #07100d 45%, #020302 100%);
+      color: var(--text);
+      font-family: var(--font);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .16;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black, transparent 78%);
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      pointer-events: none;
+      opacity: .045;
+      mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ambient-video {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      opacity: .10;
+      filter: blur(12px) saturate(.82) contrast(1.08);
+      transform: scale(1.08);
+      pointer-events: none;
+    }
+
+    .ambient-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .ambient-mask {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 70% 40%, rgba(117,255,0,.18), transparent 32%),
+        linear-gradient(90deg, rgba(3,5,4,.98) 0%, rgba(3,5,4,.88) 45%, rgba(3,5,4,.62) 100%),
+        linear-gradient(0deg, rgba(3,5,4,.98), transparent 44%);
+    }
+
+    .cursor-glow {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle, rgba(117,255,0,.11), transparent 64%);
+      opacity: .75;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: .92rem;
+      font-weight: 900;
+      transition: .25s ease;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: #071007;
+      box-shadow: 0 0 34px rgba(117,255,0,.22);
+    }
+
+    .btn-ghost {
+      border-color: var(--line-green);
+      background: rgba(0,0,0,.34);
+      color: var(--green);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-ghost:hover {
+      background: var(--green);
+      color: #071007;
+    }
+
+    .header {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(3,5,4,.72);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+      border: 1px solid rgba(117,255,0,.5);
+      box-shadow: 0 0 24px rgba(117,255,0,.14);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: .84rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      color: #dbe2d8;
+      font-size: .92rem;
+      font-weight: 800;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green);
+    }
+
+    .portfolio-page {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 118px 0 52px;
+    }
+
+    .intro {
+      max-width: 620px;
+      margin-bottom: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(117,255,0,.28);
+      background: rgba(117,255,0,.11);
+      color: var(--green);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    h1 {
+      margin-top: 18px;
+      max-width: 620px;
+      font-size: clamp(2.45rem, 4.8vw, 4.75rem);
+      line-height: .86;
+      letter-spacing: -.095em;
+      font-weight: 950;
+    }
+
+    .green {
+      color: var(--green);
+    }
+
+    .lead {
+      margin-top: 18px;
+      max-width: 520px;
+      color: #c4ccc0;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .portfolio-stage {
+      display: grid;
+      grid-template-columns: minmax(0, .88fr) minmax(360px, .82fr);
+      gap: 42px;
+      align-items: center;
+    }
+
+    .side-content {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      position: relative;
+      z-index: 4;
+    }
+
+    .phone-area {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      place-items: center;
+      perspective: 1400px;
+    }
+
+    .stage-ring {
+      position: absolute;
+      width: min(78vw, 560px);
+      height: min(78vw, 560px);
+      border-radius: 50%;
+      border: 1px solid rgba(117,255,0,.18);
+      background: radial-gradient(circle, rgba(117,255,0,.11), transparent 62%);
+      box-shadow: inset 0 0 90px rgba(117,255,0,.05), var(--shadow);
+    }
+
+    .stage-ring.small {
+      width: min(60vw, 420px);
+      height: min(60vw, 420px);
+      border-style: dashed;
+      opacity: .7;
+      animation: spin 26s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .phone-wrap {
+      position: relative;
+      z-index: 3;
+      transform-style: preserve-3d;
+      transform: rotateY(14deg) rotateX(6deg) rotateZ(1deg);
+      transition: transform .18s ease-out;
+      width: min(100%, 360px);
+    }
+
+    .phone-shadow {
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      width: 78%;
+      height: 38px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(0,0,0,.68);
+      filter: blur(18px);
+    }
+
+    .phone {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 18.6;
+      padding: 12px;
+      overflow: hidden;
+      border-radius: 48px;
+      background: linear-gradient(145deg, #202523, #070907 36%, #171c19 100%);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow:
+        0 42px 110px rgba(0,0,0,.62),
+        0 0 56px rgba(117,255,0,.16);
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 48px;
+      pointer-events: none;
+      background: linear-gradient(160deg, rgba(255,255,255,.16), transparent 24%, rgba(117,255,0,.08) 72%, transparent);
+      opacity: .75;
+    }
+
+    .phone-notch {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      z-index: 10;
+      width: 112px;
+      height: 28px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #040504;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+    }
+
+    .phone-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 38px;
+      background: #000;
+    }
+
+    .phone-screen video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .96;
+      filter: brightness(.82) contrast(1.08) saturate(.98);
+    }
+
+    .screen-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.86), transparent 40%, rgba(0,0,0,.24)),
+        radial-gradient(circle at 70% 18%, rgba(117,255,0,.16), transparent 28%);
+    }
+
+    .reels-ui {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+    }
+
+    .reels-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+    }
+
+    .reels-label,
+    .project-counter {
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      background: rgba(0,0,0,.36);
+      backdrop-filter: blur(12px);
+      color: rgba(255,255,255,.94);
+      font-size: .72rem;
+      font-weight: 900;
+      padding: 8px 11px;
+    }
+
+    .reels-label span {
+      color: var(--green);
+    }
+
+    .reels-bottom {
+      max-width: 270px;
+    }
+
+    .reels-bottom small {
+      color: var(--green);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .reels-bottom strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.65rem;
+      line-height: .94;
+      letter-spacing: -.06em;
+      font-weight: 950;
+    }
+
+    .reels-actions {
+      position: absolute;
+      right: 14px;
+      bottom: 104px;
+      z-index: 5;
+      display: grid;
+      gap: 13px;
+      pointer-events: none;
+    }
+
+    .reels-action {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.1);
+      background: rgba(0,0,0,.28);
+      backdrop-filter: blur(8px);
+      font-size: 1.08rem;
+    }
+
+    .nav-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 8;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 50%;
+      background: rgba(3,5,4,.72);
+      color: #fff;
+      box-shadow: 0 20px 60px rgba(0,0,0,.34);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      transition: .25s ease;
+      font-size: 1.2rem;
+    }
+
+    .nav-arrow:hover {
+      color: #071007;
+      background: var(--green);
+      border-color: rgba(117,255,0,.7);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .nav-arrow.prev {
+      left: -58px;
+    }
+
+    .nav-arrow.next {
+      right: -58px;
+    }
+
+    .project-info {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(117,255,0,.14), transparent 28%),
+        rgba(255,255,255,.045);
+      padding: 28px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      min-height: 390px;
+    }
+
+    .info-tag {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 11px;
+      border: 1px solid rgba(117,255,0,.34);
+      border-radius: 999px;
+      background: rgba(117,255,0,.10);
+      color: var(--green);
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      font-weight: 950;
+    }
+
+    .info-title {
+      margin-top: 18px;
+      font-size: clamp(2rem, 3.5vw, 3.6rem);
+      line-height: .9;
+      letter-spacing: -.08em;
+      font-weight: 950;
+    }
+
+    .info-description {
+      margin-top: 18px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .info-list {
+      margin-top: 24px;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .info-list li {
+      display: flex;
+      gap: 10px;
+      color: #dce4d8;
+      font-size: .94rem;
+      line-height: 1.45;
+    }
+
+    .info-list li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 950;
+    }
+
+    .info-footer {
+      display: grid;
+      gap: 16px;
+    }
+
+    .dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.24);
+      cursor: pointer;
+      transition: .22s ease;
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 18px rgba(117,255,0,.5);
+    }
+
+    .arts-section {
+      padding: 28px 0 96px;
+      position: relative;
+    }
+
+    .arts-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 26px;
+    }
+
+    .arts-title h2 {
+      margin-top: 14px;
+      max-width: 640px;
+      font-size: clamp(2.4rem, 5vw, 4.9rem);
+      line-height: .88;
+      letter-spacing: -.09em;
+      font-weight: 950;
+    }
+
+    .arts-head p {
+      max-width: 480px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .96rem;
+    }
+
+    .instagram-frame {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(117,255,0,.14), transparent 30%),
+        rgba(255,255,255,.04);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+    }
+
+    .ig-gallery-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.18);
+    }
+
+    .ig-profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .ig-profile img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #000;
+      border: 1px solid rgba(117,255,0,.5);
+      box-shadow: 0 0 20px rgba(117,255,0,.14);
+    }
+
+    .ig-profile strong {
+      display: block;
+      font-size: .95rem;
+      font-weight: 950;
+    }
+
+    .ig-profile span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .ig-gallery-stats {
+      display: flex;
+      gap: 18px;
+      color: #dce4d8;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .ig-gallery-stats b {
+      color: var(--green);
+    }
+
+    .arts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .art-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #050705;
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .art-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .88;
+      filter: brightness(.86) contrast(1.05) saturate(.98);
+      transition: transform .42s ease, opacity .26s ease, filter .26s ease;
+    }
+
+    .art-card:hover img {
+      transform: scale(1.055);
+      opacity: 1;
+      filter: brightness(.96) contrast(1.08) saturate(1.02);
+    }
+
+    .art-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(circle at 70% 16%, rgba(117,255,0,.18), transparent 28%),
+        linear-gradient(to top, rgba(0,0,0,.76), transparent 58%);
+      opacity: 0;
+      transition: opacity .26s ease;
+    }
+
+    .art-card:hover::after {
+      opacity: 1;
+    }
+
+    .art-info {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .26s ease, transform .26s ease;
+    }
+
+    .art-card:hover .art-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .art-info span {
+      display: inline-flex;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(117,255,0,.34);
+      background: rgba(117,255,0,.12);
+      color: var(--green);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 950;
+      backdrop-filter: blur(8px);
+    }
+
+    .art-info strong {
+      display: block;
+      margin-top: 9px;
+      font-size: 1.05rem;
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      font-weight: 950;
+    }
+
+    .arts-note {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: .9rem;
+      background: rgba(0,0,0,.18);
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        display: none;
+      }
+
+      .portfolio-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-area {
+        min-height: 650px;
+        padding: 12px 0 28px;
+      }
+
+      .project-info {
+        min-height: auto;
+      }
+
+      .arts-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 20px, var(--container));
+      }
+
+      .header {
+        top: 10px;
+      }
+
+      .nav {
+        min-height: 66px;
+        padding: 7px 8px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+      }
+
+      .brand-copy strong {
+        font-size: .72rem;
+      }
+
+      .brand-copy span {
+        font-size: .54rem;
+      }
+
+      .header .btn {
+        display: none;
+      }
+
+      .portfolio-page {
+        min-height: auto;
+        padding: 104px 0 38px;
+      }
+
+      h1 {
+        font-size: clamp(2.65rem, 14vw, 4.25rem);
+      }
+
+      .lead {
+        font-size: .96rem;
+      }
+
+      .phone-area {
+        min-height: 590px;
+      }
+
+      .phone-wrap {
+        width: min(100%, 278px);
+        transform: rotateY(8deg) rotateX(4deg) rotateZ(1deg) !important;
+      }
+
+      .phone {
+        border-radius: 40px;
+        padding: 8px;
+      }
+
+      .phone-screen {
+        border-radius: 32px;
+      }
+
+      .phone-notch {
+        top: 14px;
+        width: 96px;
+        height: 24px;
+      }
+
+      .reels-ui {
+        padding: 14px;
+      }
+
+      .reels-bottom strong {
+        font-size: 1.42rem;
+      }
+
+      .nav-arrow {
+        width: 46px;
+        height: 46px;
+      }
+
+      .nav-arrow.prev {
+        left: -28px;
+      }
+
+      .nav-arrow.next {
+        right: -28px;
+      }
+
+      .project-info {
+        padding: 22px;
+        border-radius: 28px;
+      }
+
+      .info-title {
+        font-size: 2.35rem;
+      }
+
+      .info-footer .btn {
+        width: 100%;
+      }
+
+      .arts-section {
+        padding: 18px 0 68px;
+      }
+
+      .ig-gallery-top,
+      .arts-note {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ig-gallery-stats {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .arts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-video" aria-hidden="true">
+    <video id="ambientVideo" autoplay muted loop playsinline></video>
+  </div>
+  <div class="ambient-mask" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="brand">
+          <img src="img/logo.png" alt="Logo DG" />
+          <div class="brand-copy">
+            <strong>DG</strong>
+            <span>Portfólio Reels</span>
+          </div>
+        </a>
+
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="#portfolio" class="active">Portfólio</a>
+        </div>
+
+        <a class="btn btn-ghost" href="https://wa.me/351933837256?text=Ol%C3%A1%2C%20vi%20o%20portf%C3%B3lio%20da%20DG%20e%20quero%20falar%20sobre%20o%20meu%20perfil." target="_blank" rel="noopener">
+          Fale comigo
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="portfolio-page" id="portfolio">
+    <div class="container">
+      <section class="portfolio-stage" aria-label="Navegador de reels">
+        <div class="phone-area" id="phoneArea">
+          <div class="stage-ring"></div>
+          <div class="stage-ring small"></div>
+
+          <div class="phone-wrap" id="phoneWrap">
+            <div class="phone-shadow"></div>
+
+            <button class="nav-arrow prev" id="prevProject" aria-label="Reel anterior">←</button>
+            <button class="nav-arrow next" id="nextProject" aria-label="Próximo reel">→</button>
+
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen">
+                <video id="projectVideo" autoplay muted loop playsinline></video>
+                <div class="screen-overlay"></div>
+
+                <div class="reels-ui">
+                  <div class="reels-top">
+                    <div class="reels-label"><span>●</span> REEL DG</div>
+                    <div class="project-counter" id="projectCounter">01 / 06</div>
+                  </div>
+
+                  <div class="reels-bottom">
+                    <small id="phoneMeta">Posicionamento visual</small>
+                    <strong id="phoneTitle">Projeto em destaque</strong>
+                  </div>
+                </div>
+
+                <div class="reels-actions" aria-hidden="true">
+                  <div class="reels-action">♥</div>
+                  <div class="reels-action">💬</div>
+                  <div class="reels-action">↗</div>
+                  <div class="reels-action">🔖</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-content">
+          <section class="intro">
+            <div class="eyebrow">✦ Portfólio DG</div>
+            <h1>
+              Reels que mostram <span class="green">posicionamento.</span>
+            </h1>
+            <p class="lead">
+              Navega pelos projetos e vê como cada conteúdo foi pensado para gerar percepção, autoridade e contacto.
+            </p>
+          </section>
+
+          <aside class="project-info">
+            <div>
+            <span class="info-tag" id="infoTag">Categoria</span>
+            <h2 class="info-title" id="infoTitle">Título do projeto</h2>
+            <p class="info-description" id="infoDescription"></p>
+            <ul class="info-list" id="infoList"></ul>
+          </div>
+
+          <div class="info-footer">
+            <div class="dots" id="dots"></div>
+            <a class="btn btn-primary" href="https://wa.me/351933837256?text=Ol%C3%A1%2C%20vi%20o%20portf%C3%B3lio%20da%20DG%20e%20quero%20falar%20sobre%20o%20meu%20perfil." target="_blank" rel="noopener">
+              Quero algo assim
+            </a>
+          </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <section class="arts-section" id="artes">
+    <div class="container">
+      <div class="arts-head">
+        <div class="arts-title">
+          <div class="eyebrow">✦ Artes criadas</div>
+          <h2>Feed com <span class="green">presença visual.</span></h2>
+        </div>
+        <p>
+          Algumas artes desenvolvidas para reforçar identidade, clareza e percepção de valor dentro do perfil.
+        </p>
+      </div>
+
+      <div class="instagram-frame">
+        <div class="ig-gallery-top">
+          <div class="ig-profile">
+            <img src="img/logo.png" alt="Logo DG" />
+            <div>
+              <strong>dg.portfolio</strong>
+              <span>Artes, capas e peças de posicionamento</span>
+            </div>
+          </div>
+          <div class="ig-gallery-stats">
+            <span><b>09</b> artes</span>
+            <span><b>03</b> estilos</span>
+            <span><b>DG</b> visual</span>
+          </div>
+        </div>
+
+        <div class="arts-grid">
+          <article class="art-card">
+            <img src="img/1.png" alt="Arte criada para posicionamento visual" />
+            <div class="art-info"><span>Artista</span><strong></strong></div>
+          </article>
+          <article class="art-card">
+            <img src="img/5.png" alt="Arte criada para restaurante" />
+            <div class="art-info"><span>FEED</span><strong></strong></div>
+          </article>
+          <article class="art-card">
+            <img src="img/2.png" alt="Arte criada para marca pessoal" />
+            <div class="art-info"><span>Artista</span><strong></strong></div>
+          </article>
+          <article class="art-card">
+            <img src="img/3.png" alt="Arte criada para negócio" />
+            <div class="art-info"><span>Artista</span><strong></strong></div>
+          </article>
+          <article class="art-card">
+            <img src="img/4.png" alt="Arte criada para artista" />
+            <div class="art-info"><span>Artista</span><strong></strong></div>
+          </article>
+          <article class="art-card">
+            <img src="img/6.png" alt="Arte criada para serviço local" />
+            <div class="art-info"><span>Serviço</span><strong></strong></div>
+          </article>
+          <!-- <article class="art-card">
+            <img src="artes/arte-07.jpg" alt="Arte criada para campanha" />
+            <div class="art-info"><span>Campanha</span><strong>Chamada forte</strong></div>
+          </article>
+          <article class="art-card">
+            <img src="artes/arte-08.jpg" alt="Arte criada para capa de reel" />
+            <div class="art-info"><span>Capa</span><strong>Capa para reel</strong></div>
+          </article>
+          <article class="art-card">
+            <img src="artes/arte-09.jpg" alt="Arte criada para feed" />
+            <div class="art-info"><span>Feed</span><strong>Peça de presença</strong></div>
+          </article> -->
+        </div>
+
+        <div class="arts-note">
+          <span>As artes ajudam o perfil a parecer mais organizado, profissional e fácil de entender.</span>
+          <a class="btn btn-ghost" href="https://wa.me/351933837256?text=Ol%C3%A1%2C%20vi%20as%20artes%20do%20portf%C3%B3lio%20da%20DG%20e%20quero%20falar%20sobre%20o%20meu%20perfil." target="_blank" rel="noopener">Quero artes assim</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const projects = [
+      {
+        title: "Desejo, ambiente e experiência.",
+        category: "Artista",
+        meta: "Reel + posicionamento",
+        video: "reels/reel-01.mp4",
+        poster: "reels/thumb-01.jpg",
+        description: "Direção visual para fazer o público sentir vontade de estar onde você esta antes mesmo de chegar.",
+        points: ["Captação do artista", "Conteúdo para gerar desejo", "Percepção de valor no primeiro contacto"]
+      },
+      {
+        title: "Narrativa, imagem e presença.",
+        category: "Profissional",
+        meta: "Direção visual",
+        video: "reels/reel-02.mp4",
+        poster: "reels/thumb-02.jpg",
+        description: "Conteúdo criado para comunicar identidade, presença e autoridade visual.",
+        points: ["Narrativa visual", "Identidade no vídeo", "Autoridade artística"]
+      },
+      {
+        title: "Confiança, clareza e contacto.",
+        category: "Negócio",
+        meta: "Conteúdo estratégico",
+        video: "reels/reel-03.mp4",
+        poster: "reels/thumb-03.jpg",
+        description: "Projeto pensado para deixar o perfil mais profissional e facilitar a decisão do cliente.",
+        points: ["Percepção profissional", "Clareza de mensagem", "Chamada para contacto"]
+      },
+      ];
+
+    let currentProject = 0;
+
+    const projectVideo = document.getElementById("projectVideo");
+    const ambientVideo = document.getElementById("ambientVideo");
+    const phoneMeta = document.getElementById("phoneMeta");
+    const phoneTitle = document.getElementById("phoneTitle");
+    const projectCounter = document.getElementById("projectCounter");
+    const infoTag = document.getElementById("infoTag");
+    const infoTitle = document.getElementById("infoTitle");
+    const infoDescription = document.getElementById("infoDescription");
+    const infoList = document.getElementById("infoList");
+    const dots = document.getElementById("dots");
+    const prevProject = document.getElementById("prevProject");
+    const nextProject = document.getElementById("nextProject");
+    const phoneArea = document.getElementById("phoneArea");
+    const phoneWrap = document.getElementById("phoneWrap");
+    const cursorGlow = document.getElementById("cursorGlow");
+
+    function setVideo(videoEl, project) {
+      videoEl.src = project.video;
+      videoEl.poster = project.poster;
+      videoEl.load();
+      videoEl.play().catch(() => {});
+    }
+
+    function renderNavigation() {
+      dots.innerHTML = "";
+
+      projects.forEach((project, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dot";
+        dot.setAttribute("aria-label", `Ir para o reel ${index + 1}`);
+        dot.addEventListener("click", () => setProject(index));
+        dots.appendChild(dot);
+      });
+    }
+
+    function updateActiveNavigation() {
+      [...dots.children].forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentProject);
+      });
+    }
+
+    function setProject(index) {
+      currentProject = (index + projects.length) % projects.length;
+      const project = projects[currentProject];
+
+      setVideo(projectVideo, project);
+      setVideo(ambientVideo, project);
+
+      phoneMeta.textContent = project.meta;
+      phoneTitle.textContent = project.title;
+      projectCounter.textContent = `${String(currentProject + 1).padStart(2, "0")} / ${String(projects.length).padStart(2, "0")}`;
+
+      infoTag.textContent = project.category;
+      infoTitle.textContent = project.title;
+      infoDescription.textContent = project.description;
+      infoList.innerHTML = project.points.map((point) => `<li>${point}</li>`).join("");
+
+      updateActiveNavigation();
+    }
+
+    prevProject.addEventListener("click", () => setProject(currentProject - 1));
+    nextProject.addEventListener("click", () => setProject(currentProject + 1));
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") setProject(currentProject - 1);
+      if (event.key === "ArrowRight") setProject(currentProject + 1);
+    });
+
+    document.querySelectorAll("video").forEach((video) => {
+      video.muted = true;
+      video.playsInline = true;
+      const play = () => video.play().catch(() => {});
+      document.addEventListener("touchstart", play, { once: true });
+    });
+
+    if (window.innerWidth > 720) {
+      window.addEventListener("pointermove", (event) => {
+        cursorGlow.style.left = event.clientX + "px";
+        cursorGlow.style.top = event.clientY + "px";
+      });
+
+      phoneArea.addEventListener("pointermove", (event) => {
+        const rect = phoneArea.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - .5) * 14;
+        const rotateX = (.5 - y) * 9;
+        phoneWrap.style.transform = `rotateY(${rotateY + 14}deg) rotateX(${rotateX + 6}deg) rotateZ(1deg)`;
+      });
+
+      phoneArea.addEventListener("mouseleave", () => {
+        phoneWrap.style.transform = "rotateY(14deg) rotateX(6deg) rotateZ(1deg)";
+      });
+    }
+
+    renderNavigation();
+    setProject(0);
+  </script>
+</body>
+</html>
